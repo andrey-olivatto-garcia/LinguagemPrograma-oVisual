@@ -94,7 +94,7 @@ const meusAlbuns = [
 ]
 
 function organizaEmLinhasEColunas(albuns) {
-  const numeroDeColunas = 3
+  const numeroDeColunas = 13414
   const numeroDeLinhas = Math.ceil(albuns.length / numeroDeColunas)
 
   let linhas = new Array(numeroDeLinhas)
@@ -116,7 +116,7 @@ function organizaEmLinhasEColunas(albuns) {
 
 function criaCardHtmlParaAlbum(album) {
   return `
-  <div class="card col-4">
+  <div class="card col-4 search-item">
     <img class="card-img-top"
       src="${album.imagem_da_capa_do_album}"
       alt="">
@@ -158,3 +158,31 @@ function randomizaListaDeAlbuns() {
   
   listaDeAlbuns.replaceWith(criaListaDeAlbuns(organizaEmLinhasEColunas(meusAlbuns.sort ( ( ) => Math . random ( ) - 0.5 ))))
 }
+
+// getElementById("searchInput").addEventListener("keydown", (event) => {});
+// onkeydown = (event) => {
+//   console.log("Ramo")
+// };
+
+
+
+const searchInput = document.getElementById("searchInput");
+const albumNames = document.getElementsByClassName("card-title");
+
+searchInput.addEventListener("keyup", (event) => {
+  const { value } = event.target;
+  const searchQuery = value.toLowerCase();
+  
+  for (const nameElement of albumNames) {
+
+      let name = nameElement.textContent.toLowerCase();
+
+      if (name.includes(searchQuery)) {
+          nameElement.parentElement.parentElement.style.display = "block";
+
+      } else {
+          nameElement.parentElement.parentElement.style.display = "none";
+
+      }
+  }
+});

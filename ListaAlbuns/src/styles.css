@@ -6,3 +6,11 @@ a {
     color: black;
     font-weight: bold;
 }
+
+#searchInput {
+    color: #000;
+}
+
+.search-item {
+    display: flex;
+}
