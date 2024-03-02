@@ -186,3 +186,44 @@ searchInput.addEventListener("keyup", (event) => {
       }
   }
 });
+
+function form12() {
+  const albumDiv = document.getElementsByClassName("form")
+  if (albumDiv[0].style.display != 'none') {
+    albumDiv[0].style.setProperty('Display', 'none');
+    albumDiv[1].style.setProperty('Display', 'none');
+    document.getElementById("albumForm").style.setProperty('Display', 'block')
+    
+  } else {
+    albumDiv[0].style.setProperty('Display', 'block');
+    albumDiv[1].style.setProperty('Display', 'block');
+    document.getElementById("albumForm").style.setProperty('Display', 'none')
+  }
+}
+
+document.getElementById("submitButton2").addEventListener("click", function() {
+  if (document.getElementById("albumName").value === "") {
+    alert ("Insira o nome do Album!");
+  } else if (document.getElementById("bandName").value === "") {
+    alert ("Insira o nome da Banda!");
+  } else if (document.getElementById("albumYear").value === "") {
+    alert ("Insira o ano em que o Album foi lançado!");
+  } else if (document.getElementById("albumLink").value === "") {
+    alert ("Insira o link do album!");
+  } else if (document.getElementById("albumCover").value === "") {
+    alert ("Insira o link da capa do Album!");
+  } else {
+  let albumName = document.getElementById("albumName").value;
+  let bandName = document.getElementById("bandName").value;
+  let albumYear = document.getElementById("albumYear").value;
+  let albumLink = document.getElementById("albumLink").value;
+  let albumCover = document.getElementById("albumCover").value;
+  meusAlbuns.push({
+            "nome_do_album": '<a href="' + albumLink + '">' + albumName + '</a>',
+            "nome_da_banda": bandName,
+            "ano_do_album": albumYear,
+            "imagem_da_capa_do_album": albumCover
+})
+form12()
+atualizaListaDeAlbuns() }
+});
